@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
 
 import java.io.IOException;
 
@@ -99,8 +100,8 @@ public class ChatController {
 
     @GetMapping("/hello")
     public void hello(@RequestParam String user, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        response.getWriter().write("<h1>Hello: " + user + "</h1>");
+        response.setContentType("text/plain");
+        response.getWriter().write("Hello: " + URLEncoder.encode(user, "UTF-8") + "\n");
         response.getWriter().flush();
     }
 
